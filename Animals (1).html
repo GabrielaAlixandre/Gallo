@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jogo de Adivinhação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        #question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #answer {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Jogo de Adivinhação</h1>
+        <p id="question">Pergunta: Você está pensando em um animal?</p>
+        <button onclick="guess(true)">Sim</button>
+        <button onclick="guess(false)">Não</button>
+        <p id="answer"></p>
+    </div>
+
+    <script>
+        function guess(escolha) {
+            var resposta = "";
+
+            if (escolha) {
+                var escolha1 = prompt("Escolha 1 para Mamífero, 2 para Ave ou 3 para Répteis").toLowerCase();
+
+                if (escolha1 === "1") {
+                    var escolha2 = prompt("Escolha 1 para Quadrúpede, 2 para Bípede, 3 para Voador ou 4 para Aquático").toLowerCase();
+
+                    if (escolha2 === "1") {
+                        var escolha3 = prompt("Escolha 1 para Carnívoro ou 2 para Herbívoro").toLowerCase();
+                        resposta = (escolha3 === "1") ? "Leão" : "Cavalo";
+                    } else if (escolha2 === "2") {
+                        var escolha4 = prompt("Escolha 1 para Onívoro ou 2 para Frutívoro").toLowerCase();
+                        resposta = (escolha4 === "1") ? "Homem" : "Macaco";
+                    } else if (escolha2 === "3") {
+                        resposta = "Morcego";
+                    } else if (escolha2 === "4") {
+                        resposta = "Baleia";
+                    }
+                } else if (escolha1 === "2") {
+                    var escolha5 = prompt("Escolha 1 para Não-voador, 2 para Nadador ou 3 para de Rapina").toLowerCase();
+
+                    if (escolha5 === "1") {
+                        var escolha6 = prompt("Escolha 1 para Tropical ou 2 para Polar").toLowerCase();
+                        resposta = (escolha6 === "1") ? "Avestruz" : "Pinguim";
+                    } else if (escolha5 === "2") {
+                        resposta = "Pato";
+                    } else if (escolha5 === "3") {
+                        resposta = "Águia";
+                    }
+                } else if (escolha1 === "3") {
+                    var escolha7 = prompt("Escolha 1 para Com Casco, 2 para Carnívoro ou 3 para Sem Patas").toLowerCase();
+                    
+                    if (escolha7 === "1") {
+                        resposta = "Tartaruga";
+                    } else if (escolha7 === "2") {
+                        resposta = "Crocodilo";
+                    } else if (escolha7 === "3") {
+                        resposta = "Cobra";
+                    }
+                }
+            } else {
+                resposta = "Você não está pensando em um animal.";
+            }
+
+            document.getElementById("answer").textContent = "Resposta: " + resposta;
+        }
+    </script>
+</body>
+</html>
